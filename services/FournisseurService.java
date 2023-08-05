@@ -18,12 +18,12 @@ public class FournisseurService {
     @Autowired
     private FournisseurRepository fournisseurRepository;
 
-	public List<Fournisseur> lire(){
+	public List<Fournisseur> read(){
 		return  fournisseurRepository.findAll();
 	}
 
 	//@GetMapping("/fournisseurs/{id}")
-	public ResponseEntity<Fournisseur> LireUnfournisseur( long id) {
+	public ResponseEntity<Fournisseur> readSupplier( long id) {
 		Optional<Fournisseur> fournisseurData = fournisseurRepository.findById(id);
 
 		if (fournisseurData.isPresent()) {
@@ -43,7 +43,7 @@ public class FournisseurService {
 		}
 	}*/
 	//@GetMapping("/fournisseurs1")
-	public ResponseEntity<Fournisseur> lireUnFournisseurId( long id) {
+	public ResponseEntity<Fournisseur> readSupplierId( long id) {
 		Optional<Fournisseur> fournisseurData = fournisseurRepository.findById(id);
 			System.out.println("je suis dans le endpoint avec id = "+id);
 		if (fournisseurData.isPresent()) {
@@ -56,7 +56,7 @@ public class FournisseurService {
 		}
 	}
 	//@PostMapping("/fournisseurs")
-	public ResponseEntity<Void> ajouteUnFournisseur ( Fournisseur fournisseur) {
+	public ResponseEntity<Void> addSupplier ( Fournisseur fournisseur) {
 		try {
 			 fournisseurRepository.save(fournisseur);
 			return new ResponseEntity<>( HttpStatus.CREATED);
@@ -65,7 +65,7 @@ public class FournisseurService {
 		}
 	}
 	//@PostMapping("/list_fournisseurs")
-	public ResponseEntity<Void> AjouteUneListeFournisseur (List<Fournisseur> fournisseurs) {
+	public ResponseEntity<Void> addSupplierList (List<Fournisseur> fournisseurs) {
 		try{ 
 			for (Fournisseur fournisseur : fournisseurs) {
             	fournisseurRepository.save(fournisseur);
@@ -77,7 +77,7 @@ public class FournisseurService {
 	}
 
 	//@PutMapping("fournisseurs/{id}")
-	public ResponseEntity<Fournisseur> updatefournisseur( long id, Fournisseur fournisseur) {
+	public ResponseEntity<Fournisseur> modifiedSupplier( long id, Fournisseur fournisseur) {
 		Optional<Fournisseur> fournisseurData = fournisseurRepository.findById(id);
 
 		if (fournisseurData.isPresent()) {
@@ -93,7 +93,7 @@ public class FournisseurService {
 		}
 	}
     //@DeleteMapping("/fournisseurs/{id}")
-	public ResponseEntity<HttpStatus> SupprimeFournisseur(long id) {
+	public ResponseEntity<HttpStatus> deleteSupplier(long id) {
 		try {
 			fournisseurRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -103,7 +103,7 @@ public class FournisseurService {
 	}
 
 	//@DeleteMapping("/fournisseurs")
-	public ResponseEntity<HttpStatus> deleteAllfournisseurs() {
+	public ResponseEntity<HttpStatus> deleteAllSupplier() {
 		try {
 			fournisseurRepository.deleteAll();
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -1,20 +1,15 @@
 package com.example.demo.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import org.hibernate.annotations.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +19,6 @@ import com.example.demo.models.Fournisseur;
 //@CrossOrigin(origins = "http://localhost:8080")
 import com.example.demo.services.FournisseurService;
 
-import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api")
@@ -42,7 +36,7 @@ public class FournisseurController {
 	
 	@GetMapping("/fournisseurs")
 	public List<Fournisseur> GetFournisseur(){
-		return  fournisseurService.lire();
+		return  fournisseurService.read();
 	}
 
 	@GetMapping("/fournisseurs/{id}")
@@ -54,7 +48,7 @@ public class FournisseurController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}*/
-		return fournisseurService.LireUnfournisseur(id);
+		return fournisseurService.readSupplier(id);
 	}
 	/*@GetMapping("/fournisseurs/{id}/adrress/{id_address}")
 	public ResponseEntity<Fournisseur> getAddressForFournisseur(@PathVariable("id") long id,@PathVariable("id_address")long id_address) {
@@ -78,7 +72,7 @@ public class FournisseurController {
 			System.out.println("j n ai pas vue le fournisseur avec id = " + id);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}*/
-		return fournisseurService.lireUnFournisseurId(id);
+		return fournisseurService.readSupplierId(id);
 	}
 	@PostMapping("/fournisseurs")
 	public ResponseEntity<Void> AddFournisseur (@RequestBody Fournisseur fournisseur) {
@@ -88,7 +82,7 @@ public class FournisseurController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}*/
-		return fournisseurService.ajouteUnFournisseur(fournisseur);
+		return fournisseurService.addSupplier(fournisseur);
 	}
 	@PostMapping("/list_fournisseurs")
 	public ResponseEntity<Void> AddListFournisseur (@RequestBody List<Fournisseur> fournisseurs) {
@@ -100,7 +94,7 @@ public class FournisseurController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}*/
-		return fournisseurService.AjouteUneListeFournisseur(fournisseurs)
+		return fournisseurService.addSupplierList(fournisseurs)
 ;	}
 
 	@PutMapping("fournisseurs/{id}")
@@ -118,28 +112,28 @@ public class FournisseurController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}*/
-		return fournisseurService.updatefournisseur(id, fournisseur);
+		return fournisseurService.modifiedSupplier(id, fournisseur);
 	}
     @DeleteMapping("/fournisseurs/{id}")
-	public ResponseEntity<HttpStatus> deleteFournisseur(@PathVariable("id") long id) {
+	public ResponseEntity<HttpStatus> delete(@PathVariable("id") long id) {
 		/*try {
 			fournisseurRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}*/
-		return fournisseurService.SupprimeFournisseur(id);
+		return fournisseurService.deleteSupplier(id);
 	}
 
 	@DeleteMapping("/fournisseurs")
-	public ResponseEntity<HttpStatus> deleteAllfournisseurs() {
+	public ResponseEntity<HttpStatus> deleteAll() {
 		/*try {
 			fournisseurRepository.deleteAll();
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}*/
-		return fournisseurService.deleteAllfournisseurs();
+		return fournisseurService.deleteAllSupplier();
 
 	}
 

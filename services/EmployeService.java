@@ -18,12 +18,12 @@ public class EmployeService {
 	@Autowired
     private EmployeRepository employeRepository;
 
-        public List<Employe> lire (){
+        public List<Employe> read (){
 
             return employeRepository.findAll();
         };
 
-        public ResponseEntity<Employe> LireUnEmploye(long id ){
+        public ResponseEntity<Employe> readEmployee(long id ){
             Optional<Employe> employeData = employeRepository.findById(id);
 
 		if (employeData.isPresent()) {
@@ -34,7 +34,7 @@ public class EmployeService {
 
         };
 
-        public ResponseEntity<Void> ajouteUnemploye ( Employe employe) {
+        public ResponseEntity<Void> addEmployee ( Employe employe) {
 		try {
 			 employeRepository.save(employe);
 			return new ResponseEntity<>( HttpStatus.CREATED);
@@ -43,7 +43,7 @@ public class EmployeService {
 		}
 	    };
 
-        public ResponseEntity<Employe> modifiemploye( long id, Employe employe) {
+        public ResponseEntity<Employe> modifiedEmployee( long id, Employe employe) {
 		Optional<Employe> employeData = employeRepository.findById(id);
 
 		if (employeData.isPresent()) {

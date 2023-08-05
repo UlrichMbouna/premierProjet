@@ -24,13 +24,13 @@ public class CommandeController {
 
     @GetMapping("/commande")
     public List<Commande> findAllCommandes(){
-        return commandeService.lire();
+        return commandeService.read();
     }
 
     @PostMapping("/commande/{id_client}/{id_employe}")
     public ResponseEntity<Void> postCommande ( @RequestBody Commande commande, @PathVariable("id_client") long id_client ,@PathVariable("id_employe") long id_employe ){
 
-        return commandeService.ajouteCommande(commande, id_client, id_employe);
+        return commandeService.addCommand(commande, id_client, id_employe);
     }
 
     

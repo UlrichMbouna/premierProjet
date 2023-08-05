@@ -25,20 +25,20 @@ public class ClientController {
 
         @GetMapping("/client")
     public List<Client> getAllclient(){
-            return clientService.lire();
+            return clientService.read();
     };
     @GetMapping("/client/{id}")
-    public ResponseEntity<Client> Getclient(@PathVariable long id){
-        return clientService.LireUnclient(id);
+    public ResponseEntity<Client> getConstomer(@PathVariable long id){
+        return clientService.readCustomer(id);
     };
     @PostMapping("/client")
     public ResponseEntity<Void> saveclient(@RequestBody Client client){
-        return clientService.ajouteUnclient(client);
+        return clientService.addCustomer(client);
     };
 
     @PutMapping("/client")
     public ResponseEntity<Client> updateclient(@RequestBody Client client, @PathVariable long id){
-        return clientService.modificlient(id, client);
+        return clientService.modifiedCustomer(id, client);
     };
 
 

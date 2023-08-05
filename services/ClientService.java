@@ -19,12 +19,12 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public List<Client> lire (){
+    public List<Client> read (){
 
             return clientRepository.findAll();
         };
 
-        public ResponseEntity<Client> LireUnclient(long id ){
+        public ResponseEntity<Client> readCustomer(long id ){
             Optional<Client> clientData = clientRepository.findById(id);
 
 		if (clientData.isPresent()) {
@@ -35,7 +35,7 @@ public class ClientService {
 
         };
 
-        public ResponseEntity<Void> ajouteUnclient ( Client client) {
+        public ResponseEntity<Void> addCustomer ( Client client) {
 		try {
 			 clientRepository.save(client);
 			return new ResponseEntity<>( HttpStatus.CREATED);
@@ -44,7 +44,7 @@ public class ClientService {
 		}
 	    };
 
-        public ResponseEntity<Client> modificlient( long id, Client client) {
+        public ResponseEntity<Client> modifiedCustomer( long id, Client client) {
 		Optional<Client> clientData = clientRepository.findById(id);
 
 		if (clientData.isPresent()) {

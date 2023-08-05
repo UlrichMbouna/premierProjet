@@ -27,7 +27,7 @@ public class ProduitService {
 		return  produitRepository.findAll();
 	}
 
-    public ResponseEntity<Produit> lireUnProduit(long id) {
+    public ResponseEntity<Produit> readProduct(long id) {
 		Optional<Produit> produitData = produitRepository.findById(id);
 
 		if (produitData.isPresent()) {
@@ -36,7 +36,7 @@ public class ProduitService {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	public ResponseEntity<Produit> LireProduitByParam(long id) {
+	public ResponseEntity<Produit> readProductByParam(long id) {
 		Optional<Produit> produitData = produitRepository.findById(id);
 			System.out.println("je suis dans le endpoint avec id = "+id);
 		if (produitData.isPresent()) {
@@ -49,7 +49,7 @@ public class ProduitService {
 		}
     }
 
-	public ResponseEntity<Void> ajouteProduit ( Produit produit,  long id_fournisseur ) {
+	public ResponseEntity<Void> addProduct ( Produit produit,  long id_fournisseur ) {
 
 		Optional<Fournisseur> optionalfournisseur ;
 		optionalfournisseur = fournisseurRepository.findById(id_fournisseur);
@@ -65,7 +65,7 @@ public class ProduitService {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	public ResponseEntity<Void> AddListProduit ( List<Produit> produits) {
+	public ResponseEntity<Void> AddListProduct ( List<Produit> produits) {
 		try{ 
 			for (Produit produit : produits) {
             	produitRepository.save(produit);
@@ -76,7 +76,7 @@ public class ProduitService {
 		}
 	}
 
-	public ResponseEntity<Produit> modifierProduit(long id,  Produit produit) {
+	public ResponseEntity<Produit> modifiedProduct(long id,  Produit produit) {
 		Optional<Produit> produitData = produitRepository.findById(id);
 
 		if (produitData.isPresent()) {
@@ -91,7 +91,7 @@ public class ProduitService {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	public ResponseEntity<HttpStatus> supprimeProduit( long id) {
+	public ResponseEntity<HttpStatus> deleteProduct( long id) {
 		try {
 			produitRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -100,7 +100,7 @@ public class ProduitService {
 		}
 	}
 
-	public ResponseEntity<HttpStatus> supprimeproduits() {
+	public ResponseEntity<HttpStatus> deleteproducts() {
 		try {
 			produitRepository.deleteAll();
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -36,42 +36,42 @@ public class ProduitController {
 
 	@GetMapping("/produits")
 	public List<Produit> FindAll(){
-		return  produitService.lireToutLesProduits();
+		return  produitService.readAllProducts();
 	}
 
 	@GetMapping("/produits/{id}")
 	public ResponseEntity<Produit> getProduitById(@PathVariable("id") long id) {
-		return produitService.lireUnProduit(id);
+		return produitService.readProduct(id);
 	}
 	
 	@GetMapping("/produits1")
 	public ResponseEntity<Produit> getProduitByParam(@RequestParam("id") long id) {
-		return produitService.LireProduitByParam(id);	
+		return produitService.readProductByParam(id);	
 	}
 
 	@PostMapping("fournisseurs/{id_fournisseur}/produits")
 	public ResponseEntity<Void> AddProduit (@RequestBody Produit produit, @PathVariable("id_fournisseur") long id_fournisseur ) {
-		return produitService.ajouteProduit(produit, id_fournisseur);
+		return produitService.addProduct(produit, id_fournisseur);
 	}
 
 	@PostMapping("/list_produits")
 	public ResponseEntity<Void> AddListProduit (@RequestBody List<Produit> produits) {
-		return produitService.AddListProduit(produits); 
+		return produitService.AddListProduct(produits); 
 	}
 
 	@PutMapping("produits/{id}")
 	public ResponseEntity<Produit> updateProduit(@PathVariable("id") long id, @RequestBody Produit produit) {
-		return produitService.modifierProduit(id, produit);
+		return produitService.modifiedProduct(id, produit);
 	}
 
     @DeleteMapping("/produits/{id}")
 	public ResponseEntity<HttpStatus> deleteProduit(@PathVariable("id") long id) {
-		return produitService.supprimeProduit(id);
+		return produitService.deleteProduct(id);
 	}
 
 	@DeleteMapping("/produits")
 	public ResponseEntity<HttpStatus> deleteAllproduits() {
-		return produitService.supprimeproduits();
+		return produitService.deleteproducts();
 	}
 
 }

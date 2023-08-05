@@ -27,20 +27,20 @@ public class EmployeController {
 
     @GetMapping("/employe")
     public List<Employe> getAllEmploye(){
-            return employeService.lire();
+            return employeService.read();
     };
     @GetMapping("/employe/{id}")
     public ResponseEntity<Employe> GetEmploye(@PathVariable long id){
-        return employeService.LireUnEmploye(id);
+        return employeService.readEmployee(id);
     };
     @PostMapping("/employe")
     public ResponseEntity<Void> saveEmploye(@RequestBody Employe employe){
-        return employeService.ajouteUnemploye(employe);
+        return employeService.addEmployee(employe);
     };
 
     @PutMapping("/employe")
     public ResponseEntity<Employe> updateEmploye(@RequestBody Employe employe, @PathVariable long id){
-        return employeService.modifiemploye(id, employe);
+        return employeService.modifiedEmployee(id, employe);
     };
 
 }

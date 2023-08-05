@@ -31,11 +31,11 @@ public class CommandeService {
     @Autowired
     private ClientRepository clientRepository;
 
-	public List<Commande> lire(){
+	public List<Commande> read(){
 		return commandeRepository.findAll();
 	}
 
-    public ResponseEntity<Void> ajouteCommande ( Commande commande,  long id_client ,long id_employe ) {
+    public ResponseEntity<Void> addCommand ( Commande commande,  long id_client ,long id_employe ) {
 
 		Optional<Employe> optionalEmploye ;
 		optionalEmploye = employeRepository.findById(id_employe);
