@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,28 +12,27 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name ="commandes")
+@Table(name ="bills")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 
-public class Commande {
+public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long  id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_employe", nullable = false)
-    private Employe employe;
-
-    @ManyToOne
-    @JoinColumn(name="id_client", nullable = false)
-    private Client client;
 
     @Column
-    private String date_commande;
+    private long id_order;
+
+    @Column
+    private long id_cutomer;
+
+    @Column
+    private String date;
 
     @Column
     private String status;

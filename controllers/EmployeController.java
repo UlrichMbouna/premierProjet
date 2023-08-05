@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.models.Employe;
 import com.example.demo.services.EmployeService;
 
-import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
 
 

@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.Commande;
-import com.example.demo.services.CommandeService;
+import com.example.demo.models.Order;
+import com.example.demo.services.OrderService;
 
 @RestController
 @RequestMapping("/api")
 
-public class CommandeController {
+public class OrderController {
 
         @Autowired
-        private CommandeService commandeService ;
+        private OrderService OrderService ;
 
 
-    @GetMapping("/commande")
-    public List<Commande> findAllCommandes(){
-        return commandeService.read();
+    @GetMapping("/Order")
+    public List<Order> findAllOrders(){
+        return OrderService.read();
     }
 
-    @PostMapping("/commande/{id_client}/{id_employe}")
-    public ResponseEntity<Void> postCommande ( @RequestBody Commande commande, @PathVariable("id_client") long id_client ,@PathVariable("id_employe") long id_employe ){
+    @PostMapping("/Order/{id_client}/{id_employe}")
+    public ResponseEntity<Void> postOrder ( @RequestBody Order Order, @PathVariable("id_client") long id_client ,@PathVariable("id_employe") long id_employe ){
 
-        return commandeService.addCommand(commande, id_client, id_employe);
+        return OrderService.addCommand(Order, id_client, id_employe);
     }
 
     

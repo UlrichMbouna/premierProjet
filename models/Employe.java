@@ -28,12 +28,12 @@ public class Employe {
     private String nom;
 
     @Column
-    private String poste;
+    private String job;
 
     @Column
      private String email;
 
     @Column
-    private double salaire;
+    private double salary;
 
 }

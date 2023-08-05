@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 
 @Data // genere automatiquement les getters et setter ,tostring  
 @Entity
-@Table(name="clients")
+@Table(name="customers")
 @NoArgsConstructor // indique que la classe ne possede pas de constructeur sans arguments 
 @AllArgsConstructor // genere les constructeurs avec tout les attributs
     
 
-public class Client {
+public class Customer {
 
         
         @Id
@@ -27,6 +27,6 @@ public class Client {
         private String nom;
     
         @Column
-        private String adress;
+        private String address;
     }
     

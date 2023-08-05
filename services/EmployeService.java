@@ -49,9 +49,9 @@ public class EmployeService {
 		if (employeData.isPresent()) {
 			Employe _employe = employeData.get();
 			_employe.setNom(employe.getNom());
-			_employe.setPoste(employe.getPoste());
+			_employe.setJob(employe.getJob());
 			_employe.setEmail(employe.getEmail());
-			_employe.setSalaire(employe.getSalaire());
+			_employe.setSalary(employe.getSalary());
 			return new ResponseEntity<>(employeRepository.save(_employe), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

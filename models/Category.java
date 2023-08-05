@@ -12,7 +12,7 @@ import lombok.Getter;
 @Table(name="categories")
 
 
-public class Categorie {
+public class Category {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
