@@ -16,8 +16,11 @@ import lombok.Setter;
     public class Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter private long id_Product;
+
+	//@OneToOne(mappedBy = "product")
+	//private OrderLine orderLine;
 
 	//@column(name="id_fournisseur")
 	@ManyToOne
