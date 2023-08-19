@@ -42,7 +42,7 @@ public class ProductController {
 		return ProductService.readProductByParam(id);	
 	}
 
-	@PostMapping("fournisseurs/{id_fournisseur}/Products")
+	@PostMapping("/Products/{id_fournisseur}")
 	public ResponseEntity<Void> AddProduct (@RequestBody Product Product, @PathVariable("id_fournisseur") long id_fournisseur ) {
 		return ProductService.addProduct(Product, id_fournisseur);
 	}

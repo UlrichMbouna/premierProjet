@@ -23,10 +23,10 @@ public class Customer {
         @GeneratedValue(strategy = GenerationType.AUTO)
         private long id ;
     
-        @Column
+        @Column(name="nom")
         private String nom;
     
-        @Column
+        @Column(name="address")
         private String address;
     }
     

@@ -1,22 +1,15 @@
 package com.example.demo.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import com.example.demo.models.OrderLine;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,21 +36,22 @@ public class Order implements Serializable{
     @JoinColumn(name="id_customer", nullable = false)
     private Customer customer;
 
-    @Column
+    @Column(name="order_date")
     private String order_date;
 
-    @Column
+    @Column(name="status")
     private String status;
+
+    @Column(name="addressLivraison")
+    private String addressLivraison;
 
     @ElementCollection
     List <OrderLine> orderLines;
     
-    /*void addNewLine(Product product, double qte, double discount){
+    void addNewLine(Product product, double qte, double discount){
         //this.orderLines.add(new OrderLine((product, qte, discount));
         getOrderLines().add(new OrderLine(product, qte, discount));
     }
-
-    //.getOrderLines().add(new OrderLine(product, qte, discount))
 
     double getTotalAmountDiscount(){
 
@@ -89,5 +83,16 @@ public class Order implements Serializable{
         }
         return sum;
     }
-    */
+
+    double getTotalWeightOrderline(){
+
+        double sum = 0;
+
+        for(OrderLine orderline : orderLines){
+            sum = sum+ orderline.getWeithOderLine();
+        }
+
+        return sum ;
+    }
+
 }

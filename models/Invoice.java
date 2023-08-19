@@ -25,16 +25,16 @@ public class Invoice {
     private long  id;
 
 
-    @Column
+    @Column(name="id_order")
     private long id_order;
 
-    @Column
+    @Column(name="id_cutomer")
     private long id_cutomer;
 
-    @Column
+    @Column(name="date")
     private String date;
 
-    @Column
+    @Column(name="status")
     private String status;
     
 }

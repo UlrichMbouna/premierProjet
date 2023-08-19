@@ -1,33 +1,26 @@
 package com.example.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+@AllArgsConstructor
 @Embeddable
 public class OrderLine {
 
     @ManyToOne
     @JoinColumn(name = "id_product")
-    private Product product;
+    @Getter private Product product;
 
-    @Column
+    @Column(name="quantity")
     @Getter @Setter private double quantity;
 
-    @Column
+    @Column(name="discount")
     @Getter @Setter private double discount;
 
     
@@ -36,7 +29,15 @@ public class OrderLine {
     public OrderLine( double qte, double discount) {
     }
 
-   /* public double getLineAmountNoDiscount(){
+    public double getWeithOderLine(){
+        return product.getWeight()*quantity;
+    }
+
+    public double getOrderLinePrice(){
+        return product.getPrice()*quantity;
+    }
+
+   public double getLineAmountNoDiscount(){
         return quantity * product.getPrice();
     }
 
@@ -48,7 +49,6 @@ public class OrderLine {
         return quantity * product.getPrice() * discount;
     }
 
-    public void setProduct(Product product2) {
-    }
-    */ 
+   
+    
 }

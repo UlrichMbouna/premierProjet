@@ -24,16 +24,16 @@ public class Employe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter private long id ;
 
-    @Column
+    @Column(name="nom")
     private String nom;
 
-    @Column
+    @Column(name="job")
     private String job;
 
-    @Column
+    @Column(name="email")
      private String email;
 
-    @Column
+    @Column(name="salary")
     private double salary;
 
 }

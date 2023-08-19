@@ -17,7 +17,7 @@ import lombok.Setter;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter private long id_Product;
+	private long id_Product;
 
 	//@OneToOne(mappedBy = "product")
 	//private OrderLine orderLine;
@@ -26,23 +26,42 @@ import lombok.Setter;
 	@ManyToOne
     @JoinColumn(name = "id_supplier", nullable = false)
 	//@JsonIgnore
-	@Getter @Setter private Supplier supplier;
+	private Supplier supplier;
 
 
     @Column(name = "mark")
-	@Getter @Setter private String mark;
+	private String mark;
 
 	@Column(name = "nom")
-	@Getter @Setter private String nom;
+	private String nom;
 
 	@Column(name = "picture")
-	//@JsonIgnore permet de ne pas afficher l element dans la reponse requete  c est a dire au moment de la serialisation
-	@Getter @Setter private String picture;
+	//@JsonIgnore permet de ne pas afficher l element dans la reponse requete  c est a
+	// dire au moment de la serialisation
+	private String picture;
     
     @Column(name = "description")
-	@Getter @Setter private String description;
+	private String description;
+
+	@Column(name = "stockQuantity")
+	private int stockQuantity;
+
+	@Column(name = "height")
+	private double height;
+
+	@Column(name = "width")
+	private double width;
+
+	@Column(name = "oz")
+	private double oZ;
+	
+	@Column(name = "weight")
+	private double weight;
+
+	@Column(name = "color")
+	private String color;
 
     @Column(name = "price")
-	@Getter @Setter private double price;
+	private double price;
 
-	}
+}
